@@ -7,14 +7,18 @@ namespace TDDMicroExercises.TirePressureMonitoringSystem.Tests
     [TestFixture]
     public class AlarmTests
     {
+        // Do not reuse original constants
+        private const double LowPressureThreshold = 17;
+        private const double HighPressureThreshold = 21;
+
         private ISensor _sensor;
-        private Alarm _alarm;
+        private IAlarm _alarm;
 
         [SetUp]
         public void Setup()
         {
             _sensor = Substitute.For<ISensor>();
-            _alarm = new Alarm(_sensor);
+            _alarm = new Alarm(_sensor, LowPressureThreshold, HighPressureThreshold);
         }
 
         [Test]
@@ -50,7 +54,7 @@ namespace TDDMicroExercises.TirePressureMonitoringSystem.Tests
         public void Check_PressureAtLow_ShouldNotSetAlarm()
         {
             // Arrange
-            _sensor.PopNextPressurePsiValue().Returns(17);
+            _sensor.PopNextPressurePsiValue().Returns(LowPressureThreshold);
 
             // Act
             _alarm.Check();
@@ -78,7 +82,7 @@ namespace TDDMicroExercises.TirePressureMonitoringSystem.Tests
         public void Check_PressureAtHigh_ShouldNotSetAlarm()
         {
             // Arrange
-            _sensor.PopNextPressurePsiValue().Returns(21);
+            _sensor.PopNextPressurePsiValue().Returns(HighPressureThreshold);
 
             // Act
             _alarm.Check();
