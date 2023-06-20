@@ -56,6 +56,7 @@
     <Compile Include="TelemetrySystem.Tests\TelemetryDiagnosticControlsTest.cs" />
     <Compile Include="TelemetrySystem\TelemetryDiagnosticControls.cs" />
     <Compile Include="TirePressureMonitoringSystem.Tests\AlarmTests.cs" />
+    <Compile Include="TirePressureMonitoringSystem\Abstractions\IAlarm.cs" />
     <Compile Include="TirePressureMonitoringSystem\Abstractions\ISensor.cs" />
     <Compile Include="TirePressureMonitoringSystem\Alarm.cs" />
     <Compile Include="TirePressureMonitoringSystem\Sensor.cs" />

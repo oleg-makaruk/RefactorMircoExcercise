@@ -1,26 +1,25 @@
-﻿using System;
-namespace TDDMicroExercises.TirePressureMonitoringSystem.SomeDependencies
-{
+﻿using TDDMicroExercises.TirePressureMonitoringSystem.Abstractions;
+
+namespace TDDMicroExercises.TirePressureMonitoringSystem.SomeDependencies {
     public class AnAlarmClient3
     {
         // A class with the only goal of simulating a dependency on Alert
         // that has impact on the refactoring.
+        private readonly IAlarm _alarm;
 
-        private Alarm _anAlarm;
-
-        public AnAlarmClient3()
+        public AnAlarmClient3(IAlarm alarm)
         {
-            _anAlarm = new Alarm();
+            _alarm = alarm;
         }
 
         public void DoSomething() 
         {
-			_anAlarm.Check();          
+            _alarm.Check();
         }
 
 		public void DoSomethingElse()
 		{
-			bool isAlarmOn = _anAlarm.AlarmOn;
+			bool isAlarmOn = _alarm.AlarmOn;
 		}
     }
 }
