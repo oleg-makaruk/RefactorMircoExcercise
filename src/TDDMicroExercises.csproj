@@ -34,7 +34,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>packages\Castle.Core.4.4.1\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="NSubstitute, Version=4.4.0.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
+      <HintPath>packages\NSubstitute.4.4.0\lib\net45\NSubstitute.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Tasks.Extensions.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="nunit.framework">
       <HintPath>lib\nunit.framework.dll</HintPath>
@@ -45,7 +55,11 @@
     <Compile Include="TelemetrySystem\TelemetryClient.cs" />
     <Compile Include="TelemetrySystem.Tests\TelemetryDiagnosticControlsTest.cs" />
     <Compile Include="TelemetrySystem\TelemetryDiagnosticControls.cs" />
+    <Compile Include="TirePressureMonitoringSystem.Tests\AlarmTests.cs" />
+    <Compile Include="TirePressureMonitoringSystem\Abstractions\IAlarm.cs" />
+    <Compile Include="TirePressureMonitoringSystem\Abstractions\ISensor.cs" />
     <Compile Include="TirePressureMonitoringSystem\Alarm.cs" />
+    <Compile Include="TirePressureMonitoringSystem\Constants\TirePressureThresholds.cs" />
     <Compile Include="TirePressureMonitoringSystem\Sensor.cs" />
     <Compile Include="TurnTicketDispenser\TicketDispenser.cs" />
     <Compile Include="TurnTicketDispenser\TurnNumberSequence.cs" />
@@ -67,15 +81,11 @@
     <Compile Include="TelemetrySystem.SomeDependencies\TelemetryDiagnosticControlsClient2.cs" />
     <Compile Include="TelemetrySystem.SomeDependencies\TelemetryDiagnosticControlsClient3.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="TirePressureMonitoringSystem.SomeDependencies\" />
-    <Folder Include="UnicodeFileToHtmlTextConverter.SomeDependencies\" />
-    <Folder Include="TurnTicketDispenser.SomeDependencies\" />
-    <Folder Include="TelemetrySystem.SomeDependencies\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="lib\nunit.framework.dll" />
     <None Include="lib\nunit.framework.xml" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
