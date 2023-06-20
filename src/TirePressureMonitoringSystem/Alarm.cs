@@ -2,14 +2,19 @@ using TDDMicroExercises.TirePressureMonitoringSystem.Abstractions;
 
 namespace TDDMicroExercises.TirePressureMonitoringSystem
 {
-    public class Alarm : IAlarm
+    public class Alarm
     {
         private const double LowPressureThreshold = 17;
         private const double HighPressureThreshold = 21;
 
         private readonly ISensor _sensor;
 
-        bool _alarmOn;
+        bool _alarmOn = false;
+
+        public Alarm()
+        {
+            _sensor = new Sensor();
+        }
 
         public Alarm(ISensor sensor)
         {
@@ -26,6 +31,10 @@ namespace TDDMicroExercises.TirePressureMonitoringSystem
             }
         }
 
-        public bool AlarmOn => _alarmOn;
+        public bool AlarmOn
+        {
+            get { return _alarmOn; }
+        }
+
     }
 }
